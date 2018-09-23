@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import './assets/css/reset.css'
+
 export default {
   name: 'App'
 }
@@ -12,6 +14,6 @@ export default {
 
 <style>
 #app {
-  text-align: center;
+
 }
 </style>

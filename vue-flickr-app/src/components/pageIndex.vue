@@ -1,36 +1,31 @@
 <template>
-  <div class="flickerapp-PageIndex">
-    <h1>Flicker Photo List</h1>
-    <ul class="flickerapp-PhotoList">
-      <li class="flickerapp-PhotoList__child">
-        <a href='#'>
-
-        </a>
-      </li>
-    </ul>
+  <div class="flickerapp-pageIndex">
+    <MainTitle />
+    <SearchBox />
+    <PhotoList />
   </div>
 </template>
 
 <script>
+import PhotoList from '@/components/PhotoList.vue'
+import MainTitle from '@/components/MainTitle.vue'
+import SearchBox from '@/components/SearchBox.vue'
+
 export default {
   name: 'pageIndex',
   data () {
-    return {
-      msg: 'page index!!!!',
-      isRed: true
-    }
   },
+  components: {
+    PhotoList: PhotoList,
+    MainTitle: MainTitle,
+    SearchBox: SearchBox
+},
   created () {
-    console.log(this.$style)
+
   }
 }
 </script>
 
-<style module>
-.red{
-  color:#ff0000;
-}
-.bold{
-  font-weight:bold;
-}
+<style scoped lang="scss">
+
 </style>
