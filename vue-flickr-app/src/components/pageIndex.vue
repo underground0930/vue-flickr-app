@@ -1,24 +1,24 @@
 <template>
-  <div class="flickerapp-pageIndex">
-    <MainTitle />
-    <SearchBox />
-    <PhotoList />
+  <div class="flickerapp-PageIndex">
+    <searchbox />
+    <photolist />
+    <pagenation />
   </div>
 </template>
 
 <script>
 import PhotoList from '@/components/PhotoList.vue'
-import MainTitle from '@/components/MainTitle.vue'
 import SearchBox from '@/components/SearchBox.vue'
+import Pagenation from '@/components/Pagenation.vue'
 
 export default {
-  name: 'pageIndex',
+  name: 'PageIndex',
   data () {
   },
   components: {
-    PhotoList: PhotoList,
-    MainTitle: MainTitle,
-    SearchBox: SearchBox
+    'photolist': PhotoList,
+    'searchbox': SearchBox,
+    'pagenation': Pagenation,
 },
   created () {
 

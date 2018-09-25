@@ -1,15 +1,15 @@
 <template>
-  <h1 class="flickerapp-mainTitle">Flicker Photo List</h1>
+  <h1 class="flickerapp-MainTitle">Flicker Photo List</h1>
 </template>
 
 <script>
 export default {
-  name: 'mainTitle'
+  name: 'MainTitle'
 }
 </script>
 
 <style scoped lang="scss">
-  .flickerapp-mainTitle{
+  .flickerapp-MainTitle{
     margin: 30px auto;
     font-weight: bold;
     font-size:26px;

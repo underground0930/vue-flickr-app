@@ -1,18 +1,18 @@
 <template>
-  <div class="flickerapp-searchBox">
-    <input type='text' class="flickerapp-searchBox_input">
-    <button class="flickerapp-searchBox_button">search</button>
+  <div class="flickerapp-SearchBox">
+    <input type='text' class="flickerapp-SearchBox_input">
+    <button class="flickerapp-SearchBox_button">search</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'searchBox'
+  name: 'SearchBox'
 }
 </script>
 
 <style scoped lang="scss">
-  .flickerapp-searchBox{
+  .flickerapp-SearchBox{
     margin: 0 0 30px;
     display:flex;
     justify-content: center;

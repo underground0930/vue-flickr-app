@@ -1,6 +1,6 @@
 <template>
     <ul class="flickerapp-PhotoList">
-      <li class="flickerapp-PhotoList_child" v-for="i in 10" :key="i">
+      <li class="flickerapp-PhotoList_child" v-for="i in 8" :key="i">
         <a href='#'>
           <dl>
             <dt><img src='https://c1.staticflickr.com/8/7195/6806520776_28cf126530_m.jpg' alt=''></dt>
