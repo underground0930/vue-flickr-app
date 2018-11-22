@@ -1,11 +1,12 @@
 <template>
   <div class="flickerapp-SearchBox">
     <input type='text' class="flickerapp-SearchBox_input" v-model="text">
-    <button class="flickerapp-SearchBox_button" @click="getdata">search</button>
+    <button class="flickerapp-SearchBox_button" @click="getIndexData({text:text})">search</button>
   </div>
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
   name: 'SearchBox',
   data(){
@@ -14,9 +15,7 @@ export default {
     }
   },
   methods: {
-    getdata () {
-      this.$store.dispatch('getData',{text:this.text});
-    }
+    ...mapActions(['getIndexData'])
   }
 }
 </script>

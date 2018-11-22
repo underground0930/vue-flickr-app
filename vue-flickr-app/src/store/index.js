@@ -9,7 +9,6 @@ const store = new Vuex.Store({
   state: {
     photos: []
   },
-  getters: {},
   mutations: {
     setPhotos(state, { photos }) {
       state.photos = photos
@@ -19,9 +18,11 @@ const store = new Vuex.Store({
     }
   },
   actions: {
-    getData({ commit }, { text }) {
-      getPhotoList(text, API_KEY).then(response => {
-        commit('setPhotos', { photos: response.data.photos })
+    getIndexData({ commit }, { text }) {
+      getPhotoList(text, 1, API_KEY).then(response => {
+        if (response.data.stat === 'ok') {
+          commit('setPhotos', { photos: response.data.photos })
+        }
       })
     },
     getDetailData({ commit }, { id }) {

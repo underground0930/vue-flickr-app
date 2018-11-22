@@ -14,7 +14,7 @@
 </template>
 
 <script>
-
+import {mapState} from 'vuex'
 export default {
   name: 'PhotoList',
   data () {
@@ -22,9 +22,7 @@ export default {
     }
   },
   computed: {
-    photos(){
-      return this.$store.state.photos
-    }
+    ...mapState(['photos'])
   },
   filters:{
     cutText(t){
@@ -35,13 +33,6 @@ export default {
         return t;
       }
     }
-  },
-  methods: {
-  },
-  mounted () {
-  },
-  created() {
-
   }
 }
 </script>

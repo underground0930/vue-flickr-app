@@ -32,6 +32,7 @@ export default {
   .flickerapp-Pagenation{
     display:flex;
     justify-content: center;
+    margin: 0 0 30px;
     &_List{
       display:flex;
       margin: 0 10px 0;

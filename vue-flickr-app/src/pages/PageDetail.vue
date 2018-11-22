@@ -22,7 +22,6 @@ export default {
       current: null
     }
   },
-
   computed:{
     makeUrl() {
       let current = this.current
