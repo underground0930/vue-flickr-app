@@ -1,7 +1,8 @@
 import axios from 'axios'
+import { API_KEY } from './config'
 const BASE_URL = 'https://api.flickr.com/services/rest/'
 
-export const getPhotoList = (searchText, page = 1, API_KEY) => {
+export const getPhotosList = (searchText, page = 1) => {
   return axios.get(BASE_URL, {
     params: {
       method: 'flickr.photos.search',
@@ -16,7 +17,7 @@ export const getPhotoList = (searchText, page = 1, API_KEY) => {
   })
 }
 
-export const getPhotoDetail = (id, API_KEY) => {
+export const getDetailInfo = id => {
   return axios.get(BASE_URL, {
     params: {
       method: 'flickr.photos.getInfo',

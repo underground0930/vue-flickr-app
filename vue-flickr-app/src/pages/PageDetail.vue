@@ -13,15 +13,11 @@
 </template>
 
 <script>
+import {mapState,mapActions} from 'vuex'
 import {getPhotoDetail} from '../api'
 import {API_KEY} from '../config'
 export default {
   name: 'PageDetail',
-  data(){
-    return {
-      current: null
-    }
-  },
   computed:{
     makeUrl() {
       let current = this.current
@@ -32,16 +28,14 @@ export default {
       } else {
         return ''
       }
-    }
+    },
+    ...mapState(['current'])
   },
   methods:{
+    ...mapActions(['getDetailData'])
   },
   mounted(){
-    getPhotoDetail(this.$route.params.id,API_KEY).then(response=>{
-      if(response.data.stat === 'ok'){
-        this.current = response.data.photo
-      }
-    })
+    this.getDetailData({id:this.$route.params.id});
   },
   created(){}
 }

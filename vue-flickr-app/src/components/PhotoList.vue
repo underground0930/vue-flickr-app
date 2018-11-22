@@ -14,12 +14,15 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState,mapMutations} from 'vuex'
 export default {
   name: 'PhotoList',
   data () {
     return {
     }
+  },
+  methods: {
+    ...mapMutations(['setCurrent'])
   },
   computed: {
     ...mapState(['photos'])
@@ -33,6 +36,10 @@ export default {
         return t;
       }
     }
+  },
+  mounted(){
+    // currentを初期化
+    this.setCurrent({current:''})
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="flickerapp-SearchBox">
     <input type='text' class="flickerapp-SearchBox_input" v-model="text">
-    <button class="flickerapp-SearchBox_button" @click="getIndexData({text:text})">search</button>
+    <button class="flickerapp-SearchBox_button" @click="getIndexData()">search</button>
   </div>
 </template>
 
@@ -9,9 +9,14 @@
 import {mapActions} from 'vuex'
 export default {
   name: 'SearchBox',
-  data(){
-    return {
-      text: null
+  computed:{
+    text:{
+      get(){
+        return this.$store.getters.text
+      },
+      set(val){
+        this.$store.commit('setText',{text:val})
+      }
     }
   },
   methods: {
