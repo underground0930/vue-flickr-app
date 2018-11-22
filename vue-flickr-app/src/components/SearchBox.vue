@@ -1,13 +1,23 @@
 <template>
   <div class="flickerapp-SearchBox">
-    <input type='text' class="flickerapp-SearchBox_input">
-    <button class="flickerapp-SearchBox_button">search</button>
+    <input type='text' class="flickerapp-SearchBox_input" v-model="text">
+    <button class="flickerapp-SearchBox_button" @click="getdata">search</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'SearchBox'
+  name: 'SearchBox',
+  data(){
+    return {
+      text: null
+    }
+  },
+  methods: {
+    getdata () {
+      this.$store.dispatch('getData',{text:this.text});
+    }
+  }
 }
 </script>
 

@@ -1,15 +1,13 @@
 <template>
     <div>
-      <input type='text' v-model="text">
-      <button @click="getdata">検索</button>
       <ul class="flickerapp-PhotoList">
         <li class="flickerapp-PhotoList_child" v-for="p in photos.photo" :key="p.id">
-          <a href='#'>
+          <router-link :to="{name: 'detail', params: {id:p.id}}">
             <dl>
-              <dt><img :src="p.url_sq" alt=''></dt>
+              <dt><img :src="p.url_sq" :alt="p.title"></dt>
               <dd>{{p.title}}</dd>
             </dl>
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -21,7 +19,6 @@ export default {
   name: 'PhotoList',
   data () {
     return {
-      text: null,
     }
   },
   computed: {
@@ -30,9 +27,6 @@ export default {
     }
   },
   methods: {
-    getdata () {
-      this.$store.dispatch('getData',{text:this.text});
-    }
   },
   mounted () {
   },
@@ -65,13 +59,11 @@ export default {
       a{
         display:block;
       }
-      dl{}
       dt{
         img{
           width:100%;
         }
       }
-      dd{}
     }
   }
 </style>

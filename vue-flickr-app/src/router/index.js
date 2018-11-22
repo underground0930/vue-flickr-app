@@ -8,10 +8,12 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      name: 'index',
       path: '/',
       component: PageIndex
     },
     {
+      name: 'detail',
       path: '/:id(\\d+)',
       component: PageDetail
     }
