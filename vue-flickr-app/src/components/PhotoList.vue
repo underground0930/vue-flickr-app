@@ -5,7 +5,7 @@
           <router-link :to="{name: 'detail', params: {id:p.id}}">
             <dl>
               <dt><img :src="p.url_sq" :alt="p.title"></dt>
-              <dd>{{p.title}}</dd>
+              <dd>{{p.title | cutText}}</dd>
             </dl>
           </router-link>
         </li>
@@ -24,6 +24,16 @@ export default {
   computed: {
     photos(){
       return this.$store.state.photos
+    }
+  },
+  filters:{
+    cutText(t){
+      var len = 25;
+      if(t.length > len){
+        return t.substr(0,len) + '...';
+      }else{
+        return t;
+      }
     }
   },
   methods: {
