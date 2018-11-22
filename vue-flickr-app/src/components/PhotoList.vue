@@ -1,24 +1,42 @@
 <template>
-    <ul class="flickerapp-PhotoList">
-      <li class="flickerapp-PhotoList_child" v-for="i in 8" :key="i">
-        <a href='#'>
-          <dl>
-            <dt><img src='https://c1.staticflickr.com/8/7195/6806520776_28cf126530_m.jpg' alt=''></dt>
-            <dd>aaaaaaaa</dd>
-          </dl>
-        </a>
-      </li>
-    </ul>
+    <div>
+      <input type='text' v-model="text">
+      <button @click="getdata">検索</button>
+      <ul class="flickerapp-PhotoList">
+        <li class="flickerapp-PhotoList_child" v-for="p in photos.photo" :key="p.id">
+          <a href='#'>
+            <dl>
+              <dt><img :src="p.url_sq" alt=''></dt>
+              <dd>{{p.title}}</dd>
+            </dl>
+          </a>
+        </li>
+      </ul>
+    </div>
 </template>
 
 <script>
+
 export default {
   name: 'PhotoList',
   data () {
     return {
+      text: null,
     }
   },
-  created () {
+  computed: {
+    photos(){
+      return this.$store.state.photos
+    }
+  },
+  methods: {
+    getdata () {
+      this.$store.dispatch('getData',{text:this.text});
+    }
+  },
+  mounted () {
+  },
+  created() {
   }
 }
 </script>
