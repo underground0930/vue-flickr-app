@@ -1,14 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { API_KEY } from './config'
-import { getPhotoList, getPhotoDetail } from './api'
+import { API_KEY } from '../config'
+import { getPhotoList, getPhotoDetail } from '../api'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    photos: [],
-    current: null
+    photos: []
   },
   getters: {},
   mutations: {
@@ -27,7 +26,9 @@ const store = new Vuex.Store({
     },
     getDetailData({ commit }, { id }) {
       getPhotoDetail(id, API_KEY).then(response => {
-        commit('setCurrent', { current: response.current })
+        if (response.data.stat === 'ok') {
+          commit('setCurrent', { current: response.data.photo })
+        }
       })
     }
   }

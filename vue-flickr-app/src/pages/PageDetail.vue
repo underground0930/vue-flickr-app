@@ -1,35 +1,80 @@
 <template>
   <div class="flickerapp-PageDetail">
-    <h1 class="title">detail</h1>
-    <p>このページは ID: {{$route.params.id}}の詳細を表示する</p>
-    <div>
-      <img src="`https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg`" alt=''>
-
+    <h2 class="flickerapp-PageDetail_title">detail</h2>
+    <p class="flickerapp-PageDetail_id">ID: {{$route.params.id}}</p>
+    <figure v-if="current" class="flickerapp-PageDetail_photo">
+      <img :src="makeUrl" alt=''>
+    </figure>
+    <div class="loading" v-else>loading...</div>
+    <div class="flickerapp-PageDetail_topLink">
+      <router-link to="/">topへ戻る</router-link>
     </div>
   </div>
 </template>
 
 <script>
+import {getPhotoDetail} from '../api'
+import {API_KEY} from '../config'
 export default {
   name: 'PageDetail',
   data(){
     return {
+      current: null
     }
   },
 
   computed:{
+    makeUrl() {
+      let current = this.current
+      if (current) {
+        return `https://farm${current.farm}.staticflickr.com/${
+          current.server
+        }/${current.id}_${current.secret}.jpg`
+      } else {
+        return ''
+      }
+    }
   },
   methods:{
   },
   mounted(){
-    this.$store.dispatch('getDetailData',{id:this.$route.params.id});
+    getPhotoDetail(this.$route.params.id,API_KEY).then(response=>{
+      if(response.data.stat === 'ok'){
+        this.current = response.data.photo
+      }
+    })
   },
-  created(){
-
-  }
+  created(){}
 }
 </script>
 
 <style scoped lang="scss">
-
+  .flickerapp-PageDetail{
+    width:300px;
+    margin: 0 auto 0;
+  }
+  .flickerapp-PageDetail_title{
+    font-size:1.3rem;
+    text-align:center;
+    font-weight:bold;
+    margin: 0 auto 10px;
+  }
+  .flickerapp-PageDetail_id{
+    text-align:center;
+    margin: 0 auto 10px;
+  }
+  .flickerapp-PageDetail_photo{
+    img{
+      width:100%;
+    }
+  }
+  .loading{
+    text-align:center;
+    margin: 80px 0 0;
+    font-weight:bold;
+  }
+  .flickerapp-PageDetail_topLink{
+    text-align:center;
+    margin: 30px;
+  }
 </style>

@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 const BASE_URL = 'https://api.flickr.com/services/rest/'
 
 export const getPhotoList = (searchText, API_KEY) => {
