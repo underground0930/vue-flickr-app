@@ -1,8 +1,6 @@
 <template>
   <div class="flickerapp-PageIndex">
-    <searchbox />
-    <pagenation />
-    <photolist />
+    <searchbox /> <pagenation /> <photolist />
   </div>
 </template>
 
@@ -14,13 +12,11 @@ import Pagenation from '@/components/Pagenation.vue'
 export default {
   name: 'PageIndex',
   components: {
-    'photolist': PhotoList,
-    'searchbox': SearchBox,
-    'pagenation': Pagenation
-  }
+    photolist: PhotoList,
+    searchbox: SearchBox,
+    pagenation: Pagenation,
+  },
 }
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

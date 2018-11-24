@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <main-title />
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -11,11 +11,9 @@ import MainTitle from '@/components/MainTitle.vue'
 export default {
   name: 'App',
   components: {
-    'main-title': MainTitle
-  }
+    'main-title': MainTitle,
+  },
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

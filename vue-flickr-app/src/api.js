@@ -12,8 +12,8 @@ export const getPhotosList = (searchText, page = 1) => {
       nojsoncallback: 1,
       extras: 'url_sq',
       per_page: 10,
-      page: page
-    }
+      page: page,
+    },
   })
 }
 
@@ -25,7 +25,7 @@ export const getDetailInfo = id => {
       photo_id: id,
       format: 'json',
       nojsoncallback: 1,
-      extras: 'url_o'
-    }
+      extras: 'url_o',
+    },
   })
 }

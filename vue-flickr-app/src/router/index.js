@@ -10,12 +10,12 @@ export default new Router({
     {
       name: 'index',
       path: '/',
-      component: PageIndex
+      component: PageIndex,
     },
     {
       name: 'detail',
       path: '/:id(\\d+)',
-      component: PageDetail
-    }
-  ]
+      component: PageDetail,
+    },
+  ],
 })
