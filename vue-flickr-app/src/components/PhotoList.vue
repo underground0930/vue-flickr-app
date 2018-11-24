@@ -4,7 +4,7 @@
         <li class="flickerapp-PhotoList_child" v-for="p in photos.photo" :key="p.id">
           <router-link :to="{name: 'detail', params: {id:p.id}}">
             <dl>
-              <dt><img :src="p.url_sq" :alt="p.title"></dt>
+              <dt><img height="150" :src="p.url_sq" :alt="p.title" @load="load"></dt>
               <dd>{{p.title | cutText}}</dd>
             </dl>
           </router-link>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import {mapState,mapMutations} from 'vuex'
+import {mapState, mapMutations} from 'vuex'
 export default {
   name: 'PhotoList',
   data () {
@@ -22,24 +22,27 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['setCurrent'])
+    ...mapMutations(['setCurrent']),
+    load (elm) {
+      elm.path[0].classList.add('is-load')
+    }
   },
   computed: {
     ...mapState(['photos'])
   },
-  filters:{
-    cutText(t){
-      var len = 25;
-      if(t.length > len){
-        return t.substr(0,len) + '...';
-      }else{
-        return t;
+  filters: {
+    cutText (t) {
+      var len = 25
+      if (t.length > len) {
+        return t.substr(0, len) + '...'
+      } else {
+        return t
       }
     }
   },
-  mounted(){
+  mounted () {
     // currentを初期化
-    this.setCurrent({current:''})
+    this.setCurrent({current: ''})
   }
 }
 </script>
@@ -49,21 +52,21 @@ export default {
     display:flex;
     flex-wrap:wrap;
     justify-content:space-between;
-    width:860px;
+    width:800px;
     margin: 0 auto 0;
     &:before{
       content:"";
       display: block;
-      width: 200px;
+      width: 150px;
       order:1;
     }
     &::after{
       content:"";
       display: block;
-      width: 200px;
+      width: 150px;
     }
     &_child{
-      width: 200px;
+      width: 150px;
       margin-bottom:20px;
       a{
         display:block;
@@ -71,7 +74,15 @@ export default {
       dt{
         img{
           width:100%;
+          opacity:0;
+          transition: opacity 0.3s;
         }
+        img.is-load{
+          opacity:1;
+        }
+      }
+      dd{
+        word-break: break-all;
       }
     }
   }

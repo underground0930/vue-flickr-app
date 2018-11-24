@@ -8,7 +8,6 @@
 <script>
 import './assets/css/reset.css'
 import MainTitle from '@/components/MainTitle.vue'
-
 export default {
   name: 'App',
   components: {

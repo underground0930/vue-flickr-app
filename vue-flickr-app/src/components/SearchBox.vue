@@ -9,13 +9,13 @@
 import {mapActions} from 'vuex'
 export default {
   name: 'SearchBox',
-  computed:{
-    text:{
-      get(){
+  computed: {
+    text: {
+      get () {
         return this.$store.getters.text
       },
-      set(val){
-        this.$store.commit('setText',{text:val})
+      set (val) {
+        this.$store.commit('setText', {text: val})
       }
     }
   },

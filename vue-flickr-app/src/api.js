@@ -11,7 +11,7 @@ export const getPhotosList = (searchText, page = 1) => {
       format: 'json',
       nojsoncallback: 1,
       extras: 'url_sq',
-      per_page: 8,
+      per_page: 10,
       page: page
     }
   })

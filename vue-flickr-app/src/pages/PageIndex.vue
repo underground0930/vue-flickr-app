@@ -13,11 +13,6 @@ import Pagenation from '@/components/Pagenation.vue'
 
 export default {
   name: 'PageIndex',
-  data () {
-    return {
-
-    }
-  },
   components: {
     'photolist': PhotoList,
     'searchbox': SearchBox,

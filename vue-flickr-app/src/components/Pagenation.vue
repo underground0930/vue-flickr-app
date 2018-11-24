@@ -1,35 +1,35 @@
 <template>
   <div v-if="photos" class="flickerapp-Pagenation">
-    <a href='#' v-if="page >= 2" class="flickerapp-Pagenation_prev" @click.prevent="getIndexData({page: page - 1 })">&lt; 前へ</a>
+    <a href='#' v-if="page >= 2" class="flickerapp-Pagenation_prev" @click.prevent="getIndexData(page - 1)">&lt; 前へ</a>
     <ul class="flickerapp-Pagenation_List">
       <li v-if="page >= 3" class="flickerapp-Pagenation_ListChild">
-        <a class="flickerapp-Pagenation_ListLink" href='#' @click.prevent="getIndexData({page: page - 2 })">{{page - 2}}</a>
+        <a class="flickerapp-Pagenation_ListLink" href='#' @click.prevent="getIndexData(page - 2)">{{page - 2}}</a>
       </li>
       <li v-if="page >= 2" class="flickerapp-Pagenation_ListChild">
-        <a class="flickerapp-Pagenation_ListLink" href='#' @click.prevent="getIndexData({page: page - 1 })">{{page - 1}}</a>
+        <a class="flickerapp-Pagenation_ListLink" href='#' @click.prevent="getIndexData(page - 1)">{{page - 1}}</a>
       </li>
       <li v-if="page >= 1" class="flickerapp-Pagenation_ListChild">
         <b class="flickerapp-Pagenation_ListLink current">{{page}}</b>
       </li>
-      <li v-if="page >= 0" class="flickerapp-Pagenation_ListChild">
-        <a class="flickerapp-Pagenation_ListLink" href='#' @click.prevent="getIndexData({page: page + 1 })">{{page + 1}}</a>
+      <li v-if="pages - page >= 1" class="flickerapp-Pagenation_ListChild">
+        <a class="flickerapp-Pagenation_ListLink" href='#' @click.prevent="getIndexData(page + 1)">{{page + 1}}</a>
       </li>
-      <li v-if="page >= -1" class="flickerapp-Pagenation_ListChild">
-        <a class="flickerapp-Pagenation_ListLink" href='#' @click.prevent="getIndexData({page: page + 2 })">{{page + 2}}</a>
+      <li v-if="pages - page >= 2" class="flickerapp-Pagenation_ListChild">
+        <a class="flickerapp-Pagenation_ListLink" href='#' @click.prevent="getIndexData(page + 2)">{{page + 2}}</a>
       </li>
     </ul>
-    <a href='#' v-if="page >= 0" class="flickerapp-Pagenation_next" @click.prevent="getIndexData({page: page + 1 })">次へ &gt;</a>
+    <a href='#' v-if="pages - page >= 1" class="flickerapp-Pagenation_next" @click.prevent="getIndexData(page + 1)">次へ &gt;</a>
   </div>
 </template>
 
 <script>
-import {mapState,mapActions, mapGetters} from 'vuex'
+import {mapState, mapActions, mapGetters} from 'vuex'
 export default {
-  computed:{
-    ...mapGetters(['page','pages']),
+  computed: {
+    ...mapGetters(['page', 'pages']),
     ...mapState(['photos'])
   },
-  methods:{
+  methods: {
     ...mapActions(['getIndexData'])
   }
 }
@@ -55,4 +55,3 @@ export default {
     }
   }
 </style>
-

@@ -11,16 +11,16 @@ const store = new Vuex.Store({
     text: ''
   },
   getters: {
-    text(state) {
+    text (state) {
       return state.text
     },
-    pages(state) {
+    pages (state) {
       if (state.photos && state.photos.pages) {
         return state.photos.pages
       }
       return false
     },
-    page(state) {
+    page (state) {
       if (state.photos && state.photos.page) {
         return state.photos.page
       }
@@ -28,21 +28,20 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
-    setText(state, { text }) {
+    setText (state, { text }) {
       state.text = text
     },
-    setPhotos(state, { photos }) {
+    setPhotos (state, { photos }) {
       state.photos = photos
     },
-    setCurrent(state, { current }) {
+    setCurrent (state, { current }) {
       state.current = current
     }
   },
   actions: {
-    getIndexData({ state, commit, getters }, { page }) {
+    getIndexData ({ state, commit }, page) {
       getPhotosList(state.text, page)
         .then(response => {
-          console.log(response)
           if (response.data.stat === 'ok') {
             commit('setPhotos', { photos: response.data.photos })
           } else {
@@ -53,7 +52,7 @@ const store = new Vuex.Store({
           console.log(error)
         })
     },
-    getDetailData({ commit }, { id }) {
+    getDetailData ({ commit }, { id }) {
       getDetailInfo(id).then(response => {
         if (response.data.stat === 'ok') {
           commit('setCurrent', { current: response.data.photo })

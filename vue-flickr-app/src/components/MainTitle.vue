@@ -1,10 +1,17 @@
 <template>
-  <h1 class="flickerapp-MainTitle">Flicker Photo List</h1>
+  <div>
+    <h1 class="flickerapp-MainTitle">Flicker Photo List</h1>
+    <h2 v-if="page && pages" class="flickerapp-Count">「{{text}}」: {{page}}ページ / 全{{pages}}ページ中 </h2>
+  </div>
 </template>
 
 <script>
+import { mapGetters } from 'Vuex'
 export default {
-  name: 'MainTitle'
+  name: 'MainTitle',
+  computed: {
+    ...mapGetters(['page', 'pages', 'text'])
+  }
 }
 </script>
 
@@ -14,5 +21,10 @@ export default {
     font-weight: bold;
     font-size:26px;
     text-align:center;
+  }
+  .flickerapp-Count{
+    text-align:center;
+    font-weight:bold;
+    margin: 0 0 20px;
   }
 </style>

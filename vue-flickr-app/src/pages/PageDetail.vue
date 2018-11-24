@@ -5,7 +5,9 @@
     <figure v-if="current" class="flickerapp-PageDetail_photo">
       <img :src="makeUrl" alt=''>
     </figure>
-    <div class="loading" v-else>loading...</div>
+    <div class="loading" v-else>
+      <ball-beat-loader />
+    </div>
     <div class="flickerapp-PageDetail_topLink">
       <router-link to="/">topへ戻る</router-link>
     </div>
@@ -13,13 +15,17 @@
 </template>
 
 <script>
-import {mapState,mapActions} from 'vuex'
-import {getPhotoDetail} from '../api'
-import {API_KEY} from '../config'
+import {mapState, mapActions} from 'vuex'
+import 'vue-loaders/dist/vue-loaders.css'
+import { BallBeatLoader } from 'vue-loaders'
+
 export default {
   name: 'PageDetail',
-  computed:{
-    makeUrl() {
+  component: {
+    BallBeatLoader
+  },
+  computed: {
+    makeUrl () {
       let current = this.current
       if (current) {
         return `https://farm${current.farm}.staticflickr.com/${
@@ -31,13 +37,12 @@ export default {
     },
     ...mapState(['current'])
   },
-  methods:{
+  methods: {
     ...mapActions(['getDetailData'])
   },
-  mounted(){
-    this.getDetailData({id:this.$route.params.id});
-  },
-  created(){}
+  mounted () {
+    this.getDetailData({id: this.$route.params.id})
+  }
 }
 </script>
 
