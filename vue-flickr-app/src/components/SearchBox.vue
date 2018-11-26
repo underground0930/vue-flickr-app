@@ -1,6 +1,11 @@
 <template>
   <div class="flickerapp-SearchBox">
-    <input type="text" class="flickerapp-SearchBox_input" v-model="text" />
+    <input
+      type="text"
+      class="flickerapp-SearchBox_input"
+      v-model="text"
+      placeholder="Flickerで検索したい文字を入力"
+    />
     <button class="flickerapp-SearchBox_button" @click="getIndexData()">
       search
     </button>

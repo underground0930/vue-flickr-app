@@ -3,9 +3,11 @@
     <h2 class="flickerapp-PageDetail_title">detail</h2>
     <p class="flickerapp-PageDetail_id">ID: {{ $route.params.id }}</p>
     <figure v-if="current" class="flickerapp-PageDetail_photo">
-      <img :src="makeUrl" alt="" />
+      <img :src="makeUrl" alt="" @load="load" />
     </figure>
-    <div class="loading" v-else><ball-beat-loader /></div>
+    <div class="loading" v-else>
+      <BallBeatLoader color="#000000" size="20px" />
+    </div>
     <div class="flickerapp-PageDetail_topLink">
       <router-link to="/">topへ戻る</router-link>
     </div>
@@ -19,7 +21,7 @@ import { BallBeatLoader } from 'vue-loaders'
 
 export default {
   name: 'PageDetail',
-  component: {
+  components: {
     BallBeatLoader,
   },
   computed: {
@@ -37,6 +39,9 @@ export default {
   },
   methods: {
     ...mapActions(['getDetailData']),
+    load(elm) {
+      elm.path[0].classList.add('is-load')
+    },
   },
   mounted() {
     this.getDetailData({ id: this.$route.params.id })
@@ -62,6 +67,11 @@ export default {
 .flickerapp-PageDetail_photo {
   img {
     width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  img.is-load {
+    opacity: 1;
   }
 }
 .loading {

@@ -80,7 +80,7 @@ export default {
       img {
         width: 100%;
         opacity: 0;
-        transition: opacity 0.3s;
+        transition: opacity 0.5s;
       }
       img.is-load {
         opacity: 1;
