@@ -7,7 +7,7 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
-  base: '/flickerApp/',
+  base: '/demo/vueFlickerApp/',
   routes: [
     {
       name: 'index',
